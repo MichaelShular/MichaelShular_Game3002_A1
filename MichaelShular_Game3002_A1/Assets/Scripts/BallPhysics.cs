@@ -25,7 +25,7 @@ public class BallPhysics : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (shoot && m_bIsGrounded)
+        if (Input.GetKeyDown(KeyCode.Space) || shoot && m_bIsGrounded)
         {
             shoot = false;
             OnKickBall();
@@ -34,13 +34,12 @@ public class BallPhysics : MonoBehaviour
 
     public void OnKickBall()
     {
-
+        Xaxis = Power * Xaxis;
         Yaxis = Power * Mathf.Sin(Angle * (3.14f / 180f));
         Zaxis = Power * Mathf.Cos(Angle * (3.14f / 180f));
-        Debug.Log(Xaxis);
-        Debug.Log(Yaxis);
-        Debug.Log(Zaxis);
-
+        //Debug.Log(Xaxis);
+        //Debug.Log(Yaxis);
+        //Debug.Log(Zaxis);
         InitialVelocity.x = Xaxis;
         InitialVelocity.y = Yaxis;
         InitialVelocity.z = Zaxis;
