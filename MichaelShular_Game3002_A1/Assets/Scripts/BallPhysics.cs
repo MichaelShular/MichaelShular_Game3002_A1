@@ -35,8 +35,8 @@ public class BallPhysics : MonoBehaviour
     public void OnKickBall()
     {
 
-        Yaxis = Power * Mathf.Sin(Angle);
-        Zaxis = Power * Mathf.Cos(Angle);
+        Yaxis = Power * Mathf.Sin(Angle * (3.14f / 180f));
+        Zaxis = Power * Mathf.Cos(Angle * (3.14f / 180f));
         Debug.Log(Xaxis);
         Debug.Log(Yaxis);
         Debug.Log(Zaxis);
@@ -49,19 +49,19 @@ public class BallPhysics : MonoBehaviour
 
     public void _XAxis(float a)
     {
-        Debug.Log(a);
+      
         Xaxis = a;
     }
 
     public void _AngleAmount(float b)
     {
-        Debug.Log(b);
+        
         Angle = b;
     }
 
     public void _PowerKick(float c)
     {
-        Debug.Log(c);
+        
         Power = c;
     }
 
