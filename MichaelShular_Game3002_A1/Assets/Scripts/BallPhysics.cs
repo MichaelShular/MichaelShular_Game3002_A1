@@ -9,27 +9,22 @@ public class BallPhysics : MonoBehaviour
     private Rigidbody ballRigidBody = null;
     private bool m_bIsGrounded = true;
     public bool shoot = false;
-    public float Xaxis;
-    public float Yaxis;
-    public float Zaxis;
-    public float Angle;
-    public float Power;
+    private float Xaxis;
+    private float Yaxis;
+    private float Zaxis;
+    private float Angle = 0f;
+    private float Power = 0f;
 
     // Start is called before the first frame update
     void Start()
     {
         ballRigidBody = GetComponent<Rigidbody>();
         debugline = new Vector3(0, 0, 0);
-        InitialVelocity.x = 0;
-        InitialVelocity.y = 0;
-        InitialVelocity.z = 0;
     }
 
     // Update is called once per frame
     void Update()
     {
-
-
         if (shoot && m_bIsGrounded)
         {
             shoot = false;
@@ -42,8 +37,9 @@ public class BallPhysics : MonoBehaviour
 
         Yaxis = Power * Mathf.Sin(Angle);
         Zaxis = Power * Mathf.Cos(Angle);
-
-
+        Debug.Log(Xaxis);
+        Debug.Log(Yaxis);
+        Debug.Log(Zaxis);
 
         InitialVelocity.x = Xaxis;
         InitialVelocity.y = Yaxis;
@@ -51,19 +47,22 @@ public class BallPhysics : MonoBehaviour
         ballRigidBody.velocity = InitialVelocity; 
     }
 
-    public void X_Axis(int a)
+    public void _XAxis(float a)
     {
+        Debug.Log(a);
         Xaxis = a;
     }
 
-    public void AngleAmount(int a)
+    public void _AngleAmount(float b)
     {
-        Angle = a;
+        Debug.Log(b);
+        Angle = b;
     }
 
-    public void PowerKick(int a)
+    public void _PowerKick(float c)
     {
-        Power = a;
+        Debug.Log(c);
+        Power = c;
     }
 
     private void OnDrawGizmos()
