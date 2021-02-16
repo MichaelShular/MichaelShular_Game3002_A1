@@ -30,6 +30,12 @@ public class BallPhysics : MonoBehaviour
             shoot = false;
             OnKickBall();
         }
+        if (Input.GetKeyDown(KeyCode.R))
+        {
+            ballRigidBody.transform.position = debugline;
+            ballRigidBody.velocity = Vector3.zero;
+            ballRigidBody.angularVelocity = Vector3.zero;
+        }
     }
 
     public void OnKickBall()

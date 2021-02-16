@@ -15,10 +15,13 @@ public class Toggle : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.Space) && !toggle.enabled)
         {
             toggle.enabled = !toggle.enabled;
-
+        }
+        if (Input.GetKeyDown(KeyCode.R) && toggle.enabled)
+        {
+            toggle.enabled = !toggle.enabled;
         }
     }
 }
