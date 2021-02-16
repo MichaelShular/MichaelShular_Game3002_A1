@@ -9,11 +9,11 @@ public class BallPhysics : MonoBehaviour
     private Rigidbody ballRigidBody = null;
     private bool m_bIsGrounded = true;
     public bool shoot = false;
-    private float Xaxis;
-    private float Yaxis;
-    private float Zaxis;
-    private float Angle = 0f;
-    private float Power = 0f;
+    public float Xaxis;
+    public float Yaxis;
+    public float Zaxis;
+    public float Angle = 0f;
+    public float Power = 0f;
 
     // Start is called before the first frame update
     void Start()
@@ -40,9 +40,10 @@ public class BallPhysics : MonoBehaviour
 
     public void OnKickBall()
     {
-        Xaxis = Power * Xaxis;
+        //xaxis is negative so its shoot in the direction of the slider
+        Xaxis = Power * Mathf.Cos(Angle * (3.14f / 180f)) * Mathf.Sin(-Xaxis * (3.14f / 180f));
         Yaxis = Power * Mathf.Sin(Angle * (3.14f / 180f));
-        Zaxis = Power * Mathf.Cos(Angle * (3.14f / 180f));
+        Zaxis = Power * Mathf.Cos(Angle * (3.14f / 180f)) * Mathf.Cos(-Xaxis * (3.14f / 180f));
         //Debug.Log(Xaxis);
         //Debug.Log(Yaxis);
         //Debug.Log(Zaxis);
