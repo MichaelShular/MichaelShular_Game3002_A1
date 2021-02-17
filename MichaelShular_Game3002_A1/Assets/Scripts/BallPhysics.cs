@@ -14,17 +14,20 @@ public class BallPhysics : MonoBehaviour
     public float Zaxis;
     public float Angle = 0f;
     public float Power = 0f;
+    public float points;
 
     // Start is called before the first frame update
     void Start()
     {
         ballRigidBody = GetComponent<Rigidbody>();
         debugline = new Vector3(0, 0, 0);
+        points = 0;
     }
 
     // Update is called once per frame
     void Update()
     {
+       
         if (Input.GetKeyDown(KeyCode.Space) || shoot && m_bIsGrounded)
         {
             shoot = false;
@@ -32,7 +35,7 @@ public class BallPhysics : MonoBehaviour
         }
         if (Input.GetKeyDown(KeyCode.R))
         {
-            ballRigidBody.transform.position = debugline;
+            ballRigidBody.transform.position = new Vector3(0, 0, 20);
             ballRigidBody.velocity = Vector3.zero;
             ballRigidBody.angularVelocity = Vector3.zero;
         }
@@ -76,5 +79,13 @@ public class BallPhysics : MonoBehaviour
         Gizmos.color = Color.red;
       
         Gizmos.DrawLine(debugline, transform.position);
+    }
+
+    void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Goal"))
+        {
+            points += 1f;
+        }
     }
 }
