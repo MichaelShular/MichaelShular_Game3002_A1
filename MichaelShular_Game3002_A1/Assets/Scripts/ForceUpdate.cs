@@ -13,14 +13,14 @@ namespace UnityStandardAssets.Utility
         // Start is called before the first frame update
         void Start()
         {
-            a = GameObject.Find("Ball").GetComponent<BallPhysics>().Power;
+            a = GameObject.Find("Ball").GetComponent<BallPhysics>().Vel;
             m_text = GetComponent<Text>();
         }
 
         // Update is called once per frame
         void Update()
         {
-            a = GameObject.Find("Ball").GetComponent<BallPhysics>().Power;
+            a = GameObject.Find("Ball").GetComponent<BallPhysics>().Vel;
             m_text.text = string.Format("Force {0}", a);
         }
     }

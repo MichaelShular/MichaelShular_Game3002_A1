@@ -13,7 +13,7 @@ public class BallPhysics : MonoBehaviour
     public float Yaxis;
     public float Zaxis;
     public float Angle = 0f;
-    public float Power = 0f;
+    public float Vel = 0f;
     public float points;
 
     // Start is called before the first frame update
@@ -27,8 +27,11 @@ public class BallPhysics : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-       
-        if (Input.GetKeyDown(KeyCode.Space) || shoot && m_bIsGrounded)
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            Application.Quit();
+        }
+        if (Input.GetKeyDown(KeyCode.Space) && m_bIsGrounded)
         {
             shoot = false;
             OnKickBall();
@@ -44,15 +47,10 @@ public class BallPhysics : MonoBehaviour
     public void OnKickBall()
     {
         //xaxis is negative so its shoot in the direction of the slider
-        Xaxis = Power * Mathf.Cos(Angle * (3.14f / 180f)) * Mathf.Sin(-Xaxis * (3.14f / 180f));
-        Yaxis = Power * Mathf.Sin(Angle * (3.14f / 180f));
-        Zaxis = Power * Mathf.Cos(Angle * (3.14f / 180f)) * Mathf.Cos(-Xaxis * (3.14f / 180f));
-        //Debug.Log(Xaxis);
-        //Debug.Log(Yaxis);
-        //Debug.Log(Zaxis);
-        InitialVelocity.x = Xaxis;
-        InitialVelocity.y = Yaxis;
-        InitialVelocity.z = Zaxis;
+        InitialVelocity.z = Vel * Mathf.Cos(Angle * (3.14f / 180f)) * Mathf.Cos(-Xaxis * (3.14f / 180f));
+        InitialVelocity.x = Vel * Mathf.Cos(Angle * (3.14f / 180f)) * Mathf.Sin(-Xaxis * (3.14f / 180f));
+        InitialVelocity.y = Vel * Mathf.Sin(Angle * (3.14f / 180f));
+        
         ballRigidBody.velocity = InitialVelocity; 
     }
 
@@ -71,7 +69,7 @@ public class BallPhysics : MonoBehaviour
     public void _PowerKick(float c)
     {
         
-        Power = c;
+        Vel = c;
     }
 
     private void OnDrawGizmos()
