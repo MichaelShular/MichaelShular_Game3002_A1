@@ -21,7 +21,7 @@ namespace UnityStandardAssets.Utility
         void Update()
         {
             a = GameObject.Find("Ball").GetComponent<BallPhysics>().Angle;
-            m_text.text = string.Format("X-axis angle {0}", a);
+            m_text.text = string.Format("YZ-axis angle {0}", a);
         }
     }
 }

@@ -11,7 +11,7 @@ public class UIControls : MonoBehaviour
     }
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.C))
+        if (Input.GetKeyDown(KeyCode.S))
         {
             toggle.enabled = !toggle.enabled;
 
