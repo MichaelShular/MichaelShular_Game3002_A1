@@ -56,26 +56,22 @@ public class BallPhysics : MonoBehaviour
 
     public void _XAxis(float a)
     {
-      
         Xaxis = a;
     }
 
     public void _AngleAmount(float b)
     {
-        
         Angle = b;
     }
 
     public void _PowerKick(float c)
     {
-        
         Vel = c;
     }
 
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.red;
-      
         Gizmos.DrawLine(debugline, transform.position);
     }
 
